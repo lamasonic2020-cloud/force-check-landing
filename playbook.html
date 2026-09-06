@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comment → DM Playbook · ACUFLOW</title>
+<meta name="description" content="The three-step flow ACUFLOW runs on Instagram: reply to a keyword comment with one DM, send people to the landing page, then email them the material.">
+<meta property="og:title" content="Comment → DM Playbook · ACUFLOW">
+<meta property="og:description" content="Three steps, and the exact messages for each one.">
+<meta property="og:type" content="article">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60'%3E%3Crect width='120' height='60' fill='%23F9DCDE'/%3E%3Cg fill='%23B4286A'%3E%3Cpath d='M60 56 C56 40, 46 30, 30 26 C42 24, 56 32, 60 56Z'/%3E%3Cpath d='M60 56 C64 40, 74 30, 90 26 C78 24, 64 32, 60 56Z'/%3E%3Cpath d='M60 52 C52 36, 54 18, 60 4 C66 18, 68 36, 60 52Z'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;700;800&display=swap">
+<style>
+:root{
+  --ground:#FBF6F7; --surface:#FFF; --sunk:#F9EDF1;
+  --ink:#3A1828; --body:#5A3345; --muted:#8A6273;
+  --hair:#EEDCE3; --accent:#B4286A; --on-accent:#FDE9EC; --soft:#F7E5EC;
+  --warn:#9A5B10; --warn-bg:#FBF0DC; --stop:#A32218; --stop-bg:#FBE7E4;
+  --display:"Cormorant Garamond",Georgia,serif;
+  --mark:"Cinzel",Georgia,serif;
+  --ui:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,"PingFang TC",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --ground:#170F13; --surface:#211519; --sunk:#2B1A21;
+  --ink:#F7E9EE; --body:#DFC5D0; --muted:#A98A98;
+  --hair:#3A252D; --accent:#E87BA8; --on-accent:#25131A; --soft:#361D28;
+  --warn:#E9B45E; --warn-bg:#2E2213; --stop:#F09085; --stop-bg:#331916;
+}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--body);font-family:var(--ui);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:780px;margin:0 auto;padding:0 22px}
+:where(a,button,summary):focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:5px}
+
+header{border-bottom:1px solid var(--hair);background:var(--surface)}
+header .wrap{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:16px 22px;flex-wrap:wrap}
+.brand{font-family:var(--mark);font-size:14px;letter-spacing:.32em;color:var(--accent)}
+.who{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+h1{font-family:var(--display);font-weight:700;font-size:clamp(32px,6.5vw,46px);line-height:1.05;color:var(--ink);margin:44px 0 0;text-wrap:balance}
+h2{font-family:var(--display);font-weight:700;font-size:28px;line-height:1.15;color:var(--ink);margin:0 0 14px}
+h3{font-family:var(--display);font-weight:700;font-size:21px;color:var(--ink);margin:26px 0 0}
+p{margin:14px 0 0;max-width:66ch}
+section{padding:44px 0 0}
+hr{border:0;border-top:1px solid var(--hair);margin:44px 0 0}
+
+.lead{background:var(--soft);border-radius:12px;padding:20px 22px;margin:26px 0 0}
+.lead p{margin:0}
+.lead p+p{margin-top:9px}
+
+.flow{list-style:none;margin:24px 0 0;padding:0;display:flex;flex-direction:column;gap:12px;counter-reset:s}
+.flow li{
+  counter-increment:s;background:var(--surface);border:1px solid var(--hair);border-radius:12px;
+  padding:18px 20px;display:grid;grid-template-columns:34px 1fr;gap:0 16px;align-items:start;
+}
+.flow li::before{
+  content:counter(s);width:30px;height:30px;border-radius:50%;
+  background:var(--accent);color:var(--on-accent);font-weight:800;font-size:14px;
+  display:flex;align-items:center;justify-content:center;
+}
+.flow b{display:block;font-size:18px;color:var(--ink);line-height:1.3}
+.flow span{display:block;margin-top:5px;font-size:14.5px;color:var(--muted)}
+
+table{border-collapse:collapse;width:100%;background:var(--surface);margin:18px 0 0}
+.tw{overflow-x:auto;border:1px solid var(--hair);border-radius:10px;margin:18px 0 0}
+.tw table{margin:0;min-width:460px}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--hair);font-size:14.5px;vertical-align:top}
+th{background:var(--sunk);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:800}
+tr:last-child td{border-bottom:0}
+td.k{font-weight:800;color:var(--accent);font-size:12.5px;letter-spacing:.05em}
+td b{color:var(--ink)}
+
+.box{background:var(--surface);border:1px solid var(--hair);border-radius:10px;overflow:hidden;margin:14px 0 0}
+.bh{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:9px 13px;background:var(--sunk);border-bottom:1px solid var(--hair)}
+.bl{font-size:11px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.copy{font-family:var(--ui);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:transparent;border:1px solid var(--accent);border-radius:999px;padding:4px 13px;cursor:pointer;white-space:nowrap}
+.copy:hover,.copy.ok{background:var(--accent);color:var(--on-accent)}
+.box pre{margin:0;padding:15px 16px;font-family:var(--ui);font-size:14.5px;line-height:1.6;color:var(--ink);white-space:pre-wrap;word-break:break-word}
+
+.flag{border-radius:10px;padding:15px 17px;margin:18px 0 0;font-size:14.5px;max-width:66ch}
+.flag.warn{background:var(--warn-bg)} .flag.warn b{color:var(--warn)}
+.flag.stop{background:var(--stop-bg)} .flag.stop b{color:var(--stop)}
+.flag p{margin:0;max-width:none}
+
+.reds{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:9px}
+.reds li{background:var(--stop-bg);border-radius:9px;padding:13px 16px;font-size:15px;color:var(--ink)}
+.reds b{color:var(--stop)}
+
+details{background:var(--surface);border:1px solid var(--hair);border-radius:10px;margin:10px 0 0;overflow:hidden}
+summary{cursor:pointer;padding:14px 17px;font-weight:700;color:var(--ink);font-size:15.5px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"+ ";color:var(--accent);font-weight:800}
+details[open] summary::before{content:"− "}
+details[open] summary{border-bottom:1px solid var(--hair)}
+.dc{padding:4px 17px 18px}
+.dc p:first-child{margin-top:14px}
+
+footer{margin-top:52px;border-top:1px solid var(--hair)}
+footer .wrap{padding:20px 22px 46px}
+footer p{margin:0;font-size:12.5px;color:var(--muted)}
+a{color:var(--accent)}
+@media print{
+  body{background:#fff}
+  details{page-break-inside:avoid}
+  details:not([open]) .dc{display:none}
+  .copy{display:none}
+}
+</style>
+</head>
+<body>
+
+<header><div class="wrap"><span class="brand">ACUFLOW</span><span class="who">Comment → DM Playbook</span></div></header>
+
+<main class="wrap">
+
+  <h1>Three steps. That's the whole thing.</h1>
+
+  <div class="lead">
+    <p>Everything past the three steps is optional detail. Open it only when you hit something they don't cover.</p>
+    <p>When something doesn't fit any of these, answer like a person and keep it short.</p>
+  </div>
+
+  <ol class="flow">
+    <li><div><b>They comment a keyword — you send one DM.</b><span>Find the word, paste the matching block.</span></div></li>
+    <li><div><b>They put their name and email on the landing page.</b><span>Nothing for you to do here.</span></div></li>
+    <li><div><b>Once a day, you email them the material.</b><span>Ten minutes, same time every day.</span></div></li>
+  </ol>
+
+  <hr>
+
+  <!-- 1 -->
+  <section>
+    <h2>1 &middot; Send the DM</h2>
+    <div class="tw">
+      <table>
+        <thead><tr><th>They commented</th><th>Paste</th></tr></thead>
+        <tbody>
+          <tr><td class="k">EFFORTLESS · ADAPT · LEVERAGE · BASICS · 5YEARS · LICENSED · CHECK</td><td><b>DM-A</b> — Force Check</td></tr>
+          <tr><td class="k">MAP</td><td><b>DM-B</b> — Hands &amp; Feet Map</td></tr>
+          <tr><td class="k">11YEARS</td><td><b>DM-C</b> — Pre-Shift Check</td></tr>
+          <tr><td class="k">LIMIT</td><td><b>DM-D</b> — Boundary Scripts</td></tr>
+          <tr><td class="k">SOS</td><td><b>DM-E</b> — Body Journal</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>You can add their first name at the start. Change nothing else. Typos and wrong case are fine — if you can tell which word they meant, send that one. If they commented something that isn't on the list, send the block for whichever video they commented under.</p>
+
+    <h3>DM-A &middot; Force Check</h3>
+    <div class="box"><div class="bh"><span class="bl">Paste into the DM</span><button class="copy">Copy</button></div><pre>Hi! Thanks for the comment. Here's the short version of my Force Check — 5 yes/no questions:
+
+1. End of a work day: do your thumbs or wrists ache, tingle or hurt?
+2. When you work deep, does the pressure come mainly from your thumbs and fingers?
+3. When a client asks for more pressure, is your first move to press harder?
+4. Mid-treatment, do you lose track of which foot your weight is on?
+5. Asked to take an extra client or stay late, do you almost always say yes?
+
+0–1 yes: sustainable. Keep the volume where it is.
+2–3 yes: you're borrowing from your body. It's tolerating you — for now.
+4–5 yes: you're burning it. Cut one client a day this month before anything else.
+
+Fix one thing first — #3. When they want it deeper: go slower, change the angle, let your body weight sink in. Your hands just steer.
+
+(Not medical advice — pain over two weeks, see a doctor or physio.)
+
+Full 16-question version with your zone score and next steps: https://lamasonic2020-cloud.github.io/force-check-landing/</pre></div>
+
+    <h3>DM-B &middot; Hands &amp; Feet Starter Map</h3>
+    <div class="box"><div class="bh"><span class="bl">Paste into the DM</span><button class="copy">Copy</button></div><pre>Hi! Thanks for the comment. Two spots from my Hands &amp; Feet map to try:
+
+Three rules first:
+- No thumb-jabbing. The pressure is your body weight shifting; the hand just makes contact.
+- Slow. Hold each spot 5 breaths and wait for the tissue to let you in.
+- Ask. Sensitivity varies a lot — tell them to speak up if it's too much.
+
+HAND — the thick muscle between thumb and index finger. Client's palm down; your thumb sinks in from the back of the hand at 45° toward the bone, not straight down. Pinch, then sit back to load it. 5 breaths, release slowly. Often feels achy or tingly — say so before you start.
+
+FOOT — the natural hollow in the front third of the sole. Client prone. Thumb over thumb, sink toward the top of the foot by leaning in, not pushing. 5 breaths, 3 times.
+
+That's the whole method: position, angle, weight. Check your scope of practice; avoid pregnant clients and anything acute.
+
+The full map — 3 hand spots, 3 foot spots and the 10-minute add-on — comes with my Force Check: https://lamasonic2020-cloud.github.io/force-check-landing/</pre></div>
+
+    <h3>DM-C &middot; Pre-Shift Check</h3>
+    <div class="box"><div class="bh"><span class="bl">Paste into the DM</span><button class="copy">Copy</button></div><pre>Hi! Thanks for the comment. This is the 3-minute check I do before my first client — 11 years in, hands still fine.
+
+1. Hands: open, fist, wrist circles ×3. Anything stiff or sore?
+2. Sleep: under 6 hours = low-power mode today. Note it.
+3. Food: look at today's schedule and circle 15 minutes to eat. No gap? The schedule is wrong, not you.
+4. Heaviest client: who'll take the most out of you? Know which slot, save energy for them.
+5. Weight: stand up — which foot is it on? Every bit of pressure today starts there, not from your thumbs.
+
+All clear: work as usual. "Usual" doesn't mean add a client.
+1–2 flags: forearm or elbow instead of thumbs for deep work, 2 extra minutes between clients.
+3+ flags, or already in pain: maintain, don't push. No add-ons, no extensions, less deep work. Three red days in a row isn't a body problem — it's a scheduling problem.
+
+Printable card and the full 16-question Force Check: https://lamasonic2020-cloud.github.io/force-check-landing/</pre></div>
+
+    <h3>DM-D &middot; Boundary Scripts</h3>
+    <div class="box"><div class="bh"><span class="bl">Paste into the DM</span><button class="copy">Copy</button></div><pre>Hi! Thanks for the comment. Here are the boundary lines I wish I'd had back when I said yes to everything.
+
+Three rules:
+1. You're declining the shift, not the person.
+2. Don't give reasons, give an alternative. Reasons get argued with; alternatives don't.
+3. Can't say no on the spot? "Let me check and get back to you." The gap is what stops the pressured yes.
+
+Manager adds a client: "I'm fully booked today and the quality would drop. I have space tomorrow afternoon — can we put them there?"
+
+Asked to stay late: "I'm good until six. Past that isn't fair to the later clients. I can stay an extra hour on Thursday."
+
+A regular pushing for extra time: "I'll do the areas you need most properly. For the full thing, let's book 90 minutes next time — that beats squeezing it in today."
+
+Before any yes, ask: am I actually able, or just uncomfortable saying no? If you can't tell, it's the second.
+
+All five scripts and the Force Check: https://lamasonic2020-cloud.github.io/force-check-landing/</pre></div>
+
+    <h3>DM-E &middot; Body Journal</h3>
+    <div class="box"><div class="bh"><span class="bl">Paste into the DM</span><button class="copy">Copy</button></div><pre>Hi! Thanks for the comment. This is the 3-line journal that got me through my worst stretch — sore everywhere, hair falling out.
+
+Every night, under 2 minutes:
+Line 1 — Body: where did you feel it most today? Part + one word. "Right wrist, tight."
+Line 2 — Energy: was today a +, 0 or −? One reason. "−, fifth client was deep plus extra time."
+Line 3 — Boundary: did you say yes to something you didn't want to? Write it. This line matters most.
+
+Sundays, 10 minutes, read the week:
+- Which body part showed up 3+ times? That's a mechanics gap, not "normal soreness."
+- What do the − days have in common? Client count, a technique, no lunch?
+- How many Line 3s? Over three, your problem isn't stamina, it's boundaries.
+
+Pain, fatigue and mood aren't the enemy. They're data — once you see the pattern, you can change it.
+
+(Not medical advice — ongoing pain or low mood, talk to a professional.)
+
+Printable journal and the Force Check: https://lamasonic2020-cloud.github.io/force-check-landing/</pre></div>
+
+    <h3>Then reply under their comment</h3>
+    <p>One line, so everyone else scrolling sees that you answer.</p>
+    <div class="box"><div class="bh"><span class="bl">Comment reply</span><button class="copy">Copy</button></div><pre>Sent — check your DMs. If we don't follow each other yet, it'll be in your message requests.</pre></div>
+    <div class="flag warn"><p><b>The second sentence is not optional.</b> Instagram files DMs from people who don't follow you into their Requests folder. If they never open it, they never see your message. This is where manual DMs lose people.</p></div>
+  </section>
+
+  <!-- 2 -->
+  <section>
+    <h2>2 &middot; The landing page</h2>
+    <p>Nothing for you to do. They arrive from your DM, put in their name and email, and that's it. You'll see them appear in the <b>Force Check (Nana)</b> Google Form under Responses.</p>
+  </section>
+
+  <!-- 3 -->
+  <section>
+    <h2>3 &middot; Send the email</h2>
+    <p>Once a day, same time every day, about ten minutes. Everyone new since yesterday gets one email. The page promises it <b>within 24 hours</b> — pick a slot and don't move it.</p>
+
+    <div class="box"><div class="bh"><span class="bl">Subject</span><button class="copy">Copy</button></div><pre>Your Force Check — 16 questions, 3 minutes</pre></div>
+
+    <div class="box"><div class="bh"><span class="bl">Body — add their first name at the top</span><button class="copy">Copy</button></div><pre>Hi ,
+
+Here's your Force Check:
+https://humorous-basement-740.notion.site/01-Force-Check-3d361470621081f0814ffdad5d02cd5e
+
+Sixteen yes/no questions, about three minutes. Give yourself one point for every "yes" and add them up at the end — the scoring is right there underneath.
+
+Answer it the way you actually work, not the way you were taught to. It's useless if you answer it as the therapist you mean to be rather than the one who finished last Thursday.
+
+And do it sitting down with a clear head — not between two patients. Three minutes, but three real ones.
+
+Whatever band you land in, start with the single move it puts first. Not all of them. The first one.
+
+Nana
+Registered Massage Therapist &amp; Registered Acupuncturist
+ACUFLOW · Toronto
+
+—
+You're getting this because you asked for the Force Check at lamasonic2020-cloud.github.io/force-check-landing. Reply "stop" and I'll take you off the list.</pre></div>
+
+    <p>The last line about replying &ldquo;stop&rdquo; stays on every email — Canadian anti-spam law requires a way out.</p>
+
+    <details>
+      <summary>If they came in on MAP, 11YEARS, LIMIT or SOS — swap the link</summary>
+      <div class="dc">
+        <p>Keep the rest of the email the same. Change the first line and the link.</p>
+        <div class="tw"><table>
+          <thead><tr><th>Material</th><th>Link</th></tr></thead>
+          <tbody>
+            <tr><td><b>02 Hands &amp; Feet Starter Map</b></td><td>https://humorous-basement-740.notion.site/02-Hands-Feet-Starter-Map-3d361470621081528fc8db120b0ad70c</td></tr>
+            <tr><td><b>03 Pre-Shift Check</b></td><td>https://humorous-basement-740.notion.site/03-Pre-Shift-Check-3d3614706210818688d7e3460fbd138e</td></tr>
+            <tr><td><b>04 Boundary Scripts</b></td><td>https://humorous-basement-740.notion.site/04-Boundary-Scripts-3d361470621081b4b658e0d24eff9684</td></tr>
+            <tr><td><b>05 Body Journal</b></td><td>https://humorous-basement-740.notion.site/05-Body-Journal-3d3614706210817a81aded5b1abd1f00</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </details>
+  </section>
+
+  <hr>
+
+  <!-- red lines -->
+  <section>
+    <h2>The red lines</h2>
+    <p>These apply everywhere, every time.</p>
+    <ul class="reds">
+      <li><b>No claims about results.</b> Never treat / cure / heal / fix your pain. You talk about position, angle, force, and how someone works.</li>
+      <li><b>No diagnosing.</b> If someone describes symptoms, use the line in the first toggle below.</li>
+      <li><b>No course talk and no prices</b> — unless they ask first.</li>
+      <li><b>No patient testimonials.</b> Don't quote clients as proof.</li>
+      <li><b>The hair loss story</b> is only ever &ldquo;it came back once I changed how I lived and worked.&rdquo; Never that anything cured it.</li>
+      <li><b>Don't argue.</b> One round, then stop.</li>
+    </ul>
+  </section>
+
+  <!-- extras -->
+  <section>
+    <h2>Everything else</h2>
+    <p>Open these only when you need them.</p>
+
+    <details>
+      <summary>Other kinds of comments — questions, pushback, symptoms, bots</summary>
+      <div class="dc">
+        <p>Reply to every comment, same day, one line each. The detail belongs in the DM.</p>
+        <p><b>They asked a question</b> — one real answer, then invite the keyword.</p>
+        <div class="box"><div class="bh"><span class="bl">Example</span><button class="copy">Copy</button></div><pre>Especially deep tissue — that's where thumbs get wrecked. Comment EFFORTLESS and I'll send you the check.</pre></div>
+        <div class="box"><div class="bh"><span class="bl">Example</span><button class="copy">Copy</button></div><pre>Forearms help, but if the weight isn't coming from your feet the strain just moves up the arm. Comment BASICS and I'll send you the check.</pre></div>
+        <p><b>They're pushing back</b> (&ldquo;meridians aren't science&rdquo;) — answer once, never twice, don't delete. These comments push reach.</p>
+        <div class="box"><div class="bh"><span class="bl">Pushback</span><button class="copy">Copy</button></div><pre>Fair enough. I don't teach it as theory — I teach where the hands go, the angle, and how to load your body weight. Call it what you like; the mechanics are the same.</pre></div>
+        <p><b>They describe symptoms and want a verdict</b></p>
+        <div class="box"><div class="bh"><span class="bl">Symptoms</span><button class="copy">Copy</button></div><pre>That's more than I can answer in a comment. If it's lasted over two weeks, please get it checked by a doctor or physio.</pre></div>
+        <p><b>Friends and colleagues</b> — answer like a human. Don't push the keyword at everyone.<br><b>Ads and bots</b> — ignore and move on.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>If they reply to your DM</summary>
+      <div class="dc">
+        <p>Optional — only if you want to know more about who's actually coming in.</p>
+        <div class="box"><div class="bh"><span class="bl">Send straight after the DM</span><button class="copy">Copy</button></div><pre>Curious — what are you most stuck on right now? Hands and wrists, the workload, or something else?</pre></div>
+        <p>Sounds new — just graduated, first year, still studying:</p>
+        <div class="box"><div class="bh"><span class="bl">New</span><button class="copy">Copy</button></div><pre>That first year is the hardest on the hands — mine were exactly the same. How long have you been practising?</pre></div>
+        <p>Sounds experienced — 3+ years, own place, training others:</p>
+        <div class="box"><div class="bh"><span class="bl">Experienced</span><button class="copy">Copy</button></div><pre>Still going after that many years already puts you in the minority. Is it mostly the thumbs and wrists, or the schedule?</pre></div>
+        <p>Close it out — nothing after this:</p>
+        <div class="box"><div class="bh"><span class="bl">Close</span><button class="copy">Copy</button></div><pre>Thanks for sharing that — it helps me decide what to share next. I'll keep posting on this; message me anytime.</pre></div>
+        <p>They ask about a course themselves — never you first:</p>
+        <div class="box"><div class="bh"><span class="bl">Course question</span><button class="copy">Copy</button></div><pre>Not yet — everything I'm sharing right now is free on the account. I'll let you know if that changes.</pre></div>
+        <div class="flag stop"><p><b>Stop rules.</b> No reply, don't chase. Two turns maximum. No third message.</p></div>
+      </div>
+    </details>
+
+    <details>
+      <summary>Someone DMs you without commenting</summary>
+      <div class="dc">
+        <p>Treat it like a conversation with a colleague. No link, no email ask.</p>
+        <div class="box"><div class="bh"><span class="bl">Opener</span><button class="copy">Copy</button></div><pre>Hey, thanks for reaching out! Are you an RMT too? What's your work week like?</pre></div>
+        <p>If they ask for the material outright, send the matching DM block. Don't make them go and comment.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Timing and volume</summary>
+      <div class="dc">
+        <p>Two fixed slots a day — ten minutes before you start, ten minutes after you finish. It doesn't have to be instant.</p>
+        <p>Every comment and DM answered within 24 hours.</p>
+        <p><b>More than 20 new DMs in a day:</b> do the keyword ones first, the rest tomorrow. A burst of DMs to people who don't follow you gets the account limited.</p>
+        <p>On the day a Reel goes out, be back in the comments within an hour. The first hour is worth the most.</p>
+      </div>
+    </details>
+
+  </section>
+
+</main>
+
+<footer><div class="wrap"><p>ACUFLOW &middot; Nana Wu, RMT &amp; R.Ac &middot; Toronto</p></div></footer>
+
+<script>
+document.addEventListener("click", function (ev) {
+  var b = ev.target.closest(".copy");
+  if (!b) return;
+  var pre = b.closest(".box").querySelector("pre");
+  navigator.clipboard.writeText(pre.textContent).then(function () {
+    b.textContent = "Copied"; b.classList.add("ok");
+    setTimeout(function () { b.textContent = "Copy"; b.classList.remove("ok"); }, 1400);
+  }).catch(function () {
+    var r = document.createRange(); r.selectNodeContents(pre);
+    var s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    b.textContent = "Selected";
+    setTimeout(function () { b.textContent = "Copy"; }, 1600);
+  });
+});
+</script>
+</body>
+</html>
