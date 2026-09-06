@@ -223,6 +223,16 @@ button[type=submit][disabled]{background:var(--muted);cursor:progress}
 }
 .cred-name{margin:0;font-family:var(--display);font-weight:700;font-size:24px;line-height:1.2;color:var(--ink)}
 .cred-line{margin:10px 0 0;font-size:14px;line-height:1.65;color:var(--muted-text);text-wrap:pretty}
+.rating{
+  display:inline-flex;align-items:center;gap:9px;flex-wrap:wrap;
+  margin:16px 0 0;padding:8px 15px;
+  background:var(--panel-2);border:1px solid var(--line);border-radius:999px;
+  text-decoration:none;transition:border-color .15s ease;
+}
+.rating:hover{border-color:var(--accent)}
+.stars{color:var(--accent);font-size:13px;letter-spacing:1.5px;line-height:1}
+.rscore{font-weight:800;font-size:14px;color:var(--ink);font-variant-numeric:tabular-nums}
+.rmeta{font-size:13px;color:var(--muted-text)}
 
 /* ── thank-you choices ────────────────────────────────── */
 .choices{display:grid;gap:12px}
