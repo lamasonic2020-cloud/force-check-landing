@@ -154,7 +154,7 @@
 
     var greet = document.querySelector("[data-greeting]");
     if (greet && lead && lead.first_name) {
-      greet.textContent = lead.first_name + ", your Force Check is on its way.";
+      greet.textContent = lead.first_name + ", your Force Check arrives within 24 hours.";
     }
 
     // Hidden unless someone actually signed up AND a field exists to answer into.

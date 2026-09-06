@@ -144,10 +144,19 @@ python3 -m http.server 8765
 
 ---
 
+## 乾貨怎麼交付
+
+目前是**手動寄**。名單進來後去表單「回覆」分頁抄名字和 Email，套 `EMAIL.md` 裡的範本寄出去。頁面承諾的是 **24 小時內**，所以固定一天挑一個時段批次寄完就好。
+
+乾貨本體（Notion）：<https://humorous-basement-740.notion.site/Force-Check-3d361470621081f0814ffdad5d02cd5e>
+
+搬進 Kit 之後這封信設成 welcome automation 就會自動寄，那時記得把 `index.html` 和 `thank-you.html` 裡的「24 hours」改回「in a few minutes」。
+
+---
+
 ## 還缺的素材
 
 - **Nana 的大頭照**：把照片放進這個資料夾（例如 `nana.jpg`），然後在 `index.html` 搜尋 `class="portrait"`，把 `src="data:image/svg+xml,..."` 換成 `src="nana.jpg"`。目前是空的粉色佔位圖。
-- **秒數要對齊**：輪播 P8 寫的是「16 yes/no questions. 3 minutes.」，這頁沿用你原本落地頁的「4 minutes」。兩邊挑一個統一，落地頁要改的話搜尋 `4 minutes` 和 `four minutes`（共 4 處）。
 - **分享縮圖**：做一張 1200×630 的圖存成 `og-image.jpg` 放進資料夾，然後把 `index.html` 裡那行被註解掉的 `<meta property="og:image" ...>` 打開。這樣連結貼到 IG／FB／LINE 才會有預覽圖。
 - **隱私權說明**：加拿大 CASL 規定要讓對方清楚知道自己訂閱了什麼。頁尾那段法律聲明可以再補一個隱私權政策連結。
 

@@ -165,6 +165,19 @@ button[type=submit][disabled]{background:var(--muted);cursor:progress}
 .figure-art svg{display:block;width:100%;height:auto}
 .figcap{margin:0;font-size:16px;line-height:1.6;color:var(--body);text-wrap:pretty}
 
+/* ── result bands ─────────────────────────────────────── */
+.bands{display:grid;grid-template-columns:1fr;gap:8px}
+.seg{
+  border-radius:14px;
+  padding:20px 18px;
+  display:flex;flex-direction:column;gap:6px;
+}
+.seg-name{font-family:var(--display);font-weight:700;font-size:25px;line-height:1.1}
+.seg-range{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;opacity:.75}
+.seg-1{background:#F4E2E9;color:var(--ink)}
+.seg-2{background:#D79FB5;color:var(--ink)}
+.seg-3{background:var(--accent);color:var(--on-accent)}
+
 /* ── numbered points ──────────────────────────────────── */
 .points{list-style:none;margin:0;padding:0;display:grid;gap:0}
 .points li{padding:24px 0;border-top:1px solid var(--line)}
@@ -242,6 +255,7 @@ button[type=submit][disabled]{background:var(--muted);cursor:progress}
   .band-accent{padding:76px 0;margin:64px 0}
   .card{padding:32px 30px 28px}
   .figure-art{padding:34px 32px}
+  .bands{grid-template-columns:repeat(3,1fr)}
   .points{grid-template-columns:1fr 1fr;gap:0 40px}
   .points li:nth-child(2){border-bottom:1px solid var(--line)}
   .steps{grid-template-columns:repeat(3,1fr);gap:28px}
@@ -260,6 +274,9 @@ button[type=submit][disabled]{background:var(--muted);cursor:progress}
     gap:72px;
     padding:72px 0 40px;
   }
+  /* Thank-you page with the follow-up question switched off: no empty column. */
+  .hero:has(> [hidden]){grid-template-columns:minmax(0,1fr)}
+  .hero:has(> [hidden]) .hero-copy{max-width:760px}
   .hero-form{position:sticky;top:28px}
   h1{font-size:clamp(48px,4.2vw,62px)}
   .lede{font-size:20px}
