@@ -11,12 +11,12 @@ window.FORCE_CHECK_FORM = {
 
   // 表單的公開網址 https://docs.google.com/forms/d/e/●●●●●/viewform
   // 中間 ●●●●● 那一長串就是 formId（注意是 /d/e/ 後面那串，不是編輯網址的）
-  formId: "PASTE_FORM_ID_HERE",
+  formId: "1FAIpQLSfSEmR-G_sWnD_JbQYz6RujHyS37WqrQA1V1LLJN11jU63a2w",
 
   fields: {
     // 用「取得預先填入的連結」拿到的 entry 編號
-    first_name: "entry.0000000000",
-    email:      "entry.0000000000",
+    first_name: "entry.480637210",
+    email:      "entry.1987916465",
 
     // 選填。留空字串 = 感謝頁不會問「執業幾年」這一題。
     // 想開這題的話，在表單多加一個簡答題，把它的 entry 編號填進來。

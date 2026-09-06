@@ -19,6 +19,26 @@ alternative-apps-script/Code.gs   （備案，見文末）
 
 ---
 
+## 現況：已經接好了 ✅
+
+表單已經建好、發布好，`config.js` 也填好了。**你不需要再做第一到第三節**，那幾節是留給之後要換帳號、或 Nana 要自己重建一份時照著做的。
+
+| | |
+|---|---|
+| 表單擁有者 | `founder733733@gmail.com` |
+| 編輯表單 | https://docs.google.com/forms/d/1pWav-BHD78Q2OnBwmKOwP8V09_1s0-5Cslk5ostk3ME/edit |
+| 填表網址（公開） | https://docs.google.com/forms/d/e/1FAIpQLSfSEmR-G_sWnD_JbQYz6RujHyS37WqrQA1V1LLJN11jU63a2w/viewform |
+| First name 欄位 | `entry.480637210` |
+| Email 欄位 | `entry.1987916465` |
+
+設定已經確認過：**收集電子郵件地址 = 不收集**、**僅限回覆 1 次 = 關閉**、**作答對象 = 知道連結的使用者**。這三項是「填表的人不用登入 Google」的關鍵，之後如果有人動到設定，先回來檢查這三項。
+
+已經實測送出一筆並確認有進到「回覆」分頁。**記得把那筆測試資料刪掉**：表單 → 回覆 → 個別 → 刪除，那筆是 `TESTPLEASEDELETE`。
+
+想把回覆同步成試算表：回覆分頁右上角「連結至試算表」按一下就好。
+
+---
+
 ## 一、建立 Google 表單（約 3 分鐘）
 
 1. 到 [forms.new](https://forms.new) 開一份新表單，命名成「Force Check」之類。
