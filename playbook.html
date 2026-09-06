@@ -82,6 +82,11 @@ td b{color:var(--ink)}
 .flag.warn{background:var(--warn-bg)} .flag.warn b{color:var(--warn)}
 .flag.stop{background:var(--stop-bg)} .flag.stop b{color:var(--stop)}
 .flag p{margin:0;max-width:none}
+.twostep{background:var(--sunk);border-radius:12px;padding:18px 20px;margin:20px 0 0;display:flex;flex-direction:column;gap:10px}
+.twostep>div:not(.box):not(.flag){font-size:15.5px;color:var(--ink)}
+.twostep b{color:var(--accent);font-weight:800;margin-right:4px}
+.twostep .box{margin-top:4px}
+
 
 .reds{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:9px}
 .reds li{background:var(--stop-bg);border-radius:9px;padding:13px 16px;font-size:15px;color:var(--ink)}
@@ -122,7 +127,7 @@ a{color:var(--accent)}
   </div>
 
   <ol class="flow">
-    <li><div><b>They comment a keyword — you send one DM.</b><span>Find the word, paste the matching block.</span></div></li>
+    <li><div><b>They comment a keyword — you send one DM.</b><span>Then reply under their comment so they know to check.</span></div></li>
     <li><div><b>They put their name and email on the landing page.</b><span>Nothing for you to do here.</span></div></li>
     <li><div><b>Once a day, you email them the material.</b><span>Ten minutes, same time every day.</span></div></li>
   </ol>
@@ -131,7 +136,13 @@ a{color:var(--accent)}
 
   <!-- 1 -->
   <section>
-    <h2>1 &middot; Send the DM</h2>
+        <h2>1 &middot; Send the DM, then reply to their comment</h2>
+    <div class="twostep">
+      <div><b>a.</b> Find their keyword below and paste the matching DM.</div>
+      <div><b>b.</b> Go back to the comment and reply with this &mdash; so they know to look:</div>
+      <div class="box"><div class="bh"><span class="bl">Comment reply</span><button class="copy">Copy</button></div><pre>Sent — check your DMs. If we don't follow each other yet, it'll be in your message requests.</pre></div>
+      <div class="flag warn" style="margin-top:14px"><p><b>The second sentence is not optional.</b> Instagram files DMs from people who don't follow you into their Requests folder. If they never open it, they never see your message. This is where manual DMs lose people.</p></div>
+    </div>
     <div class="tw">
       <table>
         <thead><tr><th>They commented</th><th>Paste</th></tr></thead>
@@ -233,10 +244,6 @@ Pain, fatigue and mood aren't the enemy. They're data — once you see the patte
 
 Printable journal and the Force Check: https://lamasonic2020-cloud.github.io/force-check-landing/</pre></div>
 
-    <h3>Then reply under their comment</h3>
-    <p>One line, so everyone else scrolling sees that you answer.</p>
-    <div class="box"><div class="bh"><span class="bl">Comment reply</span><button class="copy">Copy</button></div><pre>Sent — check your DMs. If we don't follow each other yet, it'll be in your message requests.</pre></div>
-    <div class="flag warn"><p><b>The second sentence is not optional.</b> Instagram files DMs from people who don't follow you into their Requests folder. If they never open it, they never see your message. This is where manual DMs lose people.</p></div>
   </section>
 
   <!-- 2 -->
