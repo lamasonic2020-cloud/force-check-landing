@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comment → DM Playbook · 中英對照 · ACUFLOW</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+:root{
+  --ground:#FBF6F7; --surface:#FFF; --sunk:#F9EDF1;
+  --ink:#3A1828; --body:#5A3345; --muted:#8A6273;
+  --hair:#EEDCE3; --accent:#B4286A; --on-accent:#FDE9EC; --soft:#F7E5EC;
+  --warn:#9A5B10; --warn-bg:#FBF0DC; --stop:#A32218; --stop-bg:#FBE7E4;
+  --display:"Cormorant Garamond",Georgia,serif;
+  --mark:"Cinzel",Georgia,serif;
+  --ui:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,"PingFang TC",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --ground:#170F13; --surface:#211519; --sunk:#2B1A21;
+  --ink:#F7E9EE; --body:#DFC5D0; --muted:#A98A98;
+  --hair:#3A252D; --accent:#E87BA8; --on-accent:#25131A; --soft:#361D28;
+  --warn:#E9B45E; --warn-bg:#2E2213; --stop:#F09085; --stop-bg:#331916;
+}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--body);font-family:var(--ui);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:780px;margin:0 auto;padding:0 22px}
+:where(a,button,summary):focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:5px}
+
+header{border-bottom:1px solid var(--hair);background:var(--surface)}
+header .wrap{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:16px 22px;flex-wrap:wrap}
+.brand{font-family:var(--mark);font-size:14px;letter-spacing:.32em;color:var(--accent)}
+.who{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+h1{font-family:var(--display);font-weight:700;font-size:clamp(32px,6.5vw,46px);line-height:1.05;color:var(--ink);margin:44px 0 0;text-wrap:balance}
+h2{font-family:var(--display);font-weight:700;font-size:28px;line-height:1.15;color:var(--ink);margin:0 0 14px}
+h3{font-family:var(--display);font-weight:700;font-size:21px;color:var(--ink);margin:26px 0 0}
+p{margin:14px 0 0;max-width:66ch}
+section{padding:44px 0 0}
+hr{border:0;border-top:1px solid var(--hair);margin:44px 0 0}
+
+.lead{background:var(--soft);border-radius:12px;padding:20px 22px;margin:26px 0 0}
+.lead p{margin:0}
+.lead p+p{margin-top:9px}
+
+.flow{list-style:none;margin:24px 0 0;padding:0;display:flex;flex-direction:column;gap:12px;counter-reset:s}
+.flow li{
+  counter-increment:s;background:var(--surface);border:1px solid var(--hair);border-radius:12px;
+  padding:18px 20px;display:grid;grid-template-columns:34px 1fr;gap:0 16px;align-items:start;
+}
+.flow li::before{
+  content:counter(s);width:30px;height:30px;border-radius:50%;
+  background:var(--accent);color:var(--on-accent);font-weight:800;font-size:14px;
+  display:flex;align-items:center;justify-content:center;
+}
+.flow b{display:block;font-size:18px;color:var(--ink);line-height:1.3}
+.flow span{display:block;margin-top:5px;font-size:14.5px;color:var(--muted)}
+
+table{border-collapse:collapse;width:100%;background:var(--surface);margin:18px 0 0}
+.tw{overflow-x:auto;border:1px solid var(--hair);border-radius:10px;margin:18px 0 0}
+.tw table{margin:0;min-width:460px}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--hair);font-size:14.5px;vertical-align:top}
+th{background:var(--sunk);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:800}
+tr:last-child td{border-bottom:0}
+td.k{font-weight:800;color:var(--accent);font-size:12.5px;letter-spacing:.05em}
+td b{color:var(--ink)}
+
+.box{background:var(--surface);border:1px solid var(--hair);border-radius:10px;overflow:hidden;margin:14px 0 0}
+.bh{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:9px 13px;background:var(--sunk);border-bottom:1px solid var(--hair)}
+.bl{font-size:11px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.copy{font-family:var(--ui);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:transparent;border:1px solid var(--accent);border-radius:999px;padding:4px 13px;cursor:pointer;white-space:nowrap}
+.copy:hover,.copy.ok{background:var(--accent);color:var(--on-accent)}
+.box pre{margin:0;padding:15px 16px;font-family:var(--ui);font-size:14.5px;line-height:1.6;color:var(--ink);white-space:pre-wrap;word-break:break-word}
+
+.flag{border-radius:10px;padding:15px 17px;margin:18px 0 0;font-size:14.5px;max-width:66ch}
+.flag.warn{background:var(--warn-bg)} .flag.warn b{color:var(--warn)}
+.flag.stop{background:var(--stop-bg)} .flag.stop b{color:var(--stop)}
+.flag p{margin:0;max-width:none}
+.flag p+p{margin-top:8px}
+.twostep{background:var(--sunk);border-radius:12px;padding:18px 20px;margin:20px 0 0;display:flex;flex-direction:column;gap:10px}
+.twostep>div:not(.box):not(.flag){font-size:15.5px;color:var(--ink)}
+.twostep b{color:var(--accent);font-weight:800;margin-right:4px}
+.twostep .box{margin-top:4px}
+
+.reds{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:9px}
+.reds li{background:var(--stop-bg);border-radius:9px;padding:13px 16px;font-size:15px;color:var(--ink)}
+.reds b{color:var(--stop)}
+.reds em{display:block;margin-top:6px;font-style:normal;font-size:14px;color:var(--body)}
+
+.never{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:14.5px}
+.never li{padding-left:20px;position:relative}
+.never li::before{content:"×";position:absolute;left:2px;top:-1px;font-weight:800;color:var(--stop)}
+.ok-list li::before{content:"✓";color:var(--accent)}
+
+details{background:var(--surface);border:1px solid var(--hair);border-radius:10px;margin:10px 0 0;overflow:hidden}
+summary{cursor:pointer;padding:14px 17px;font-weight:700;color:var(--ink);font-size:15.5px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"+ ";color:var(--accent);font-weight:800}
+details[open] summary::before{content:"− "}
+details[open] summary{border-bottom:1px solid var(--hair)}
+.dc{padding:4px 17px 18px}
+.dc p:first-child{margin-top:14px}
+
+footer{margin-top:52px;border-top:1px solid var(--hair)}
+footer .wrap{padding:20px 22px 46px}
+footer p{margin:0;font-size:12.5px;color:var(--muted)}
+footer p+p{margin-top:7px}
+a{color:var(--accent)}
+@media print{
+  body{background:#fff}
+  details{page-break-inside:avoid}
+  details:not([open]) .dc{display:none}
+  .copy{display:none}
+}
+
+/* ── 中英對照層 ─────────────────────────────────────────
+   英文是實際要發出去的內容，中文是說明。中文一律走這幾個 class。 */
+:root{--zh:"Noto Sans TC","PingFang TC",-apple-system,BlinkMacSystemFont,"Microsoft JhengHei",sans-serif;--zhline:rgba(180,40,106,.28)}
+@media (prefers-color-scheme:dark){:root{--zhline:rgba(232,123,168,.34)}}
+
+.zh{
+  font-family:var(--zh);font-size:14.5px;line-height:1.9;color:var(--muted);
+  margin:8px 0 0;padding-left:13px;border-left:2px solid var(--zhline);
+  max-width:40em;text-wrap:pretty;
+}
+.zh b{color:var(--body);font-weight:700}
+h2 + .zh{margin:-8px 0 16px;font-size:16px;color:var(--body);font-weight:700;border-left-color:var(--accent)}
+h3 + .zh{margin-top:7px}
+.flow .zh,.reds .zh,.never .zh{max-width:none;border-left-color:var(--zhline)}
+.flow .zh{margin-top:9px}
+.reds .zh{margin-top:9px;color:var(--body)}
+.lead .zh{border-left-color:var(--accent);color:var(--body)}
+.flag .zh{border-left-color:currentColor;opacity:.85;margin-top:9px}
+.twostep > .zh{margin:2px 0 0}
+.dc .zh{margin-top:7px}
+td .zh{margin-top:6px;font-size:13.5px;padding-left:10px}
+.bl .zhl{display:block;font-family:var(--zh);font-weight:700;letter-spacing:.02em;text-transform:none;font-size:11.5px;margin-top:2px;color:var(--body)}
+
+.howto{
+  background:var(--sunk);border:1px solid var(--hair);border-radius:12px;
+  padding:17px 20px;margin:22px 0 0;font-family:var(--zh);font-size:15px;line-height:1.9;color:var(--ink);
+}
+.howto b{color:var(--accent)}
+.howto p{margin:0;max-width:none}
+.howto p + p{margin-top:7px}
+</style>
+</head>
+<body>
+
+
+
+<header><div class="wrap"><span class="brand">ACUFLOW</span><span class="who">Comment → DM Playbook · 中英對照</span></div></header>
+
+<main class="wrap">
+
+  <h1>Two steps. That's the whole thing.</h1>
+  <p class="zh" style="font-size:19px;font-weight:700;color:var(--ink);border-left-color:var(--accent);margin-top:14px">整套就這兩步。</p>
+
+  <div class="howto">
+    <p><b>這份怎麼看：</b>英文是你實際要發出去的字，中文只是說明。</p>
+    <p>要複製訊息的時候，一律複製<b>英文框裡的字</b>，不要把中文貼給對方。</p>
+  </div>
+
+  <div class="lead">
+    <p>Everything past the two steps is optional detail. Open it only when you hit something they don't cover.</p>
+    <p class="zh">兩步驟以外的東西都是備查用的。遇到這兩步沒講到的狀況，再打開來看就好。</p>
+    <p style="margin-top:12px">When something doesn't fit any of these, answer like a person and keep it short.</p>
+    <p class="zh">如果什麼都對不上，就用你自己的話回，簡短就好。</p>
+  </div>
+
+  <ol class="flow">
+    <li><div><b>They comment a keyword — you reply and send one DM.</b><span>Same DM every time. It only has a link.</span>
+      <p class="zh">對方在留言區打關鍵字 — 你回一則留言，再發一則私訊。私訊每次都一樣，裡面只有一個連結。</p></div></li>
+    <li><div><b>They put their name and email on the landing page and the material opens on the next screen.</b><span>Nothing for you to do.</span>
+      <p class="zh">他們在落地頁填名字和 Email，下一頁就直接打開乾貨。這段你完全不用做事。</p></div></li>
+  </ol>
+
+  <div class="flag warn"><p><b>You don't send any emails any more.</b> The landing page hands over the material the moment they submit the form. Nothing arrives in your inbox to action, and nothing goes out from you.</p>
+    <p class="zh"><b>你不用再寄任何 Email 了。</b>對方一送出表單，落地頁就直接把乾貨給他。你的信箱不會有事情要處理，你也不用寄任何東西出去。</p></div>
+
+  <hr>
+
+  <section>
+    <h2>1 &middot; Before every Reel goes out</h2>
+    <p class="zh">每支 Reel 發出去之前</p>
+    <p>Thirty seconds, once per Reel. This is the part that quietly breaks.</p>
+    <p class="zh">每支 Reel 檢查一次，三十秒。這一段最容易在你沒發現的時候壞掉。</p>
+    <ul class="never ok-list">
+      <li><b>Your bio link is the landing page.</b> Check it's still there.
+        <p class="zh">主頁 bio 的連結是落地頁。確認它還在。</p></li>
+      <li><b>The Story you post on Reel day gets the link sticker on the CTA slide.</b>
+        <p class="zh">發 Reel 那天的限動，CTA 那一則要放連結貼紙。</p></li>
+      <li><b>Reels from R__ on say &ldquo;link in bio&rdquo; instead of &ldquo;comment X&rdquo;.</b> Older Reels still promise a DM — keep sending those.
+        <p class="zh">從 R__ 開始的 Reel，CTA 是「link in bio」，不是「留言 X」。更早發布的 Reel 還是承諾會私訊，那些照舊要發私訊。</p></li>
+    </ul>
+    <div class="flag warn"><p>Both CTAs are live at the same time, and they will be for a while. What you do next depends on which Reel the comment is sitting under — the two reply versions in the next section cover it.</p>
+      <p class="zh">兩種 CTA 會同時在跑，而且會持續一陣子。你要怎麼回，取決於那則留言是在哪一支 Reel 底下——下一節的兩版回覆就是在處理這件事。</p></div>
+  </section>
+
+  <section>
+    <h2>2 &middot; Reply, then DM</h2>
+    <p class="zh">先回留言，再發私訊</p>
+
+    <p>Two separate messages, in this order. The reply is public, under their comment. The DM is private, in their inbox. Don't skip the reply — it's what tells them to go and look.</p>
+    <p class="zh">兩則不同的訊息，順序固定。留言回覆是公開的，就在他的留言下面；私訊是私下的，在他的收件匣。不要跳過留言回覆——那是在告訴他「去看私訊」。</p>
+
+    <div class="twostep">
+      <div><b>a.</b> First, reply under their comment. Which version depends on the Reel:</div>
+      <div class="zh">第一步，先在他的留言下面回。用哪一版要看是哪支 Reel：</div>
+      <div class="box"><div class="bh"><span class="bl">Reply A &mdash; Reels that said &ldquo;comment [keyword]&rdquo;<span class="zhl">回覆 A ·「留言關鍵字」那種 Reel</span></span><button class="copy">Copy</button></div><pre>Sent — check your DMs. If we don't follow each other yet, it'll be in your message requests.</pre></div>
+      <div class="box"><div class="bh"><span class="bl">Reply B &mdash; Reels from R__ on, that said &ldquo;link in bio&rdquo;<span class="zhl">回覆 B · 從 R__ 開始、「link in bio」那種 Reel</span></span><button class="copy">Copy</button></div><pre>It's in my bio — takes about a minute.</pre></div>
+      <div style="margin-top:6px"><b>b.</b> If it was Reply A, send them this DM. Same one every time, whatever they commented:</div>
+      <div class="zh">第二步，如果你用的是回覆 A，就發這則私訊。不管他留的是哪個關鍵字，每次都發同一則：</div>
+      <div class="box"><div class="bh"><span class="bl">The DM &middot; 251 characters, well inside Instagram&rsquo;s limit<span class="zhl">私訊 · 251 字，離 Instagram 上限還很遠</span></span><button class="copy">Copy</button></div><pre>Hi! Thanks for the comment — here it is:
+
+https://lamasonic2020-cloud.github.io/force-check-landing/
+
+Put your name and email in and it opens straight away. No spam, nothing to buy — just the material, and the odd note for working therapists later on.</pre></div>
+    </div>
+
+    <div class="flag warn"><p><b>That second sentence in Reply A is not optional.</b> Instagram files DMs from people who don't follow you into their Requests folder. If they never open it, they never see your message. This is where manual DMs lose people.</p>
+      <p class="zh"><b>回覆 A 的第二句不能省。</b>Instagram 會把「沒有互相追蹤的人」寄來的私訊丟進「訊息邀請」資料夾。他如果沒去點開，就永遠看不到你的訊息。手動私訊的人大多是在這裡流失的。</p></div>
+
+    <p>With Reply B there's no DM to send — the link is already in your bio and they go straight there. If they comment on a link-in-bio Reel and still ask you to send it, send the DM above. Don't make a point of it.</p>
+    <p class="zh">用回覆 B 的時候不用發私訊——連結已經在你的 bio，他們會自己過去。如果有人在 link-in-bio 的 Reel 底下留言、還是要你傳給他，就把上面那則私訊傳給他，不用特別去糾正他。</p>
+
+    <h3>How you actually get their email</h3>
+    <p class="zh">Email 到底是怎麼收到的</p>
+    <p><b>You never ask for it and you never handle it.</b> You send the link; they fill in the form on the landing page themselves; the material opens on the next screen. Their name and email land in the <b>Force Check (Nana)</b> Google Form under Responses, and Cody works from that.</p>
+    <p class="zh"><b>你不會跟對方要，也不會經手。</b>你只給連結；他們自己在落地頁填表單；下一頁就直接打開乾貨。名字和 Email 會進到 <b>Force Check (Nana)</b> 這份 Google 表單的「回覆」分頁，由 Cody 那邊處理。</p>
+    <ul class="never">
+      <li>Don't ask them to reply with their email in the DM.
+        <p class="zh">不要叫對方把 Email 回在私訊裡。</p></li>
+      <li>Don't type their email into the form on their behalf.
+        <p class="zh">不要幫對方把 Email 填進表單。</p></li>
+      <li>Don't send the material itself in the DM.
+        <p class="zh">不要把乾貨本身貼在私訊裡。</p></li>
+      <li>Don't promise to send anything by email. Nothing is sent by email any more.
+        <p class="zh">不要承諾會用 Email 寄東西。現在沒有任何東西是用 Email 寄的。</p></li>
+    </ul>
+    <p>If someone <b>replies with their email anyway</b> — they're used to the old way — don't take it down, and don't apologise. Point them back at the link:</p>
+    <p class="zh">如果有人還是把 Email 回過來（他習慣舊流程），不用記下來，也不用道歉。把他導回連結就好：</p>
+    <div class="box"><div class="bh"><span class="bl">They sent their email instead<span class="zhl">對方直接把 Email 傳過來</span></span><button class="copy">Copy</button></div><pre>No need for your email on my end — pop it into the link and the whole thing opens right there:
+https://lamasonic2020-cloud.github.io/force-check-landing/</pre></div>
+
+    <p>You can put their first name at the start of the DM. Change nothing else. <b>Don't paste the material itself into a DM</b> — Instagram cuts messages off around 1,000 characters and the send silently fails.</p>
+    <p class="zh">你可以在私訊開頭加上對方的名字，其他都不要改。<b>不要把乾貨本身貼進私訊</b>——Instagram 大約 1,000 字就會截斷，而且是沒有任何提示地送不出去。</p>
+
+    <h3>If they DM you first</h3>
+    <p class="zh">如果對方是先私訊你</p>
+    <p>Someone who messages the account for the first time <b>already has the link</b> — the instant reply sends it automatically, before you've even seen the message. So don't paste it again. It reads like you didn't look at what they wrote.</p>
+    <p class="zh">第一次私訊這個帳號的人，<b>手上已經有連結了</b>——即時回覆會自動把連結傳出去，在你看到訊息之前就送出了。所以不要再貼一次，那看起來像你沒讀他寫什麼。</p>
+    <p>Answer the actual question they asked, in one or two lines, like a colleague. Only mention the link if they ask where it went or say they can't find it.</p>
+    <p class="zh">直接回答他真正問的問題，一兩句話，像同行聊天那樣。只有在他問「連結在哪」或說找不到的時候，才需要提到連結。</p>
+
+    <div class="flag warn"><p><b>The link changes when the new landing page goes live.</b> When Cody sends the new URL, it needs swapping in three places: the DM above, the auto-reply in Meta Business Suite, and your bio.</p>
+      <p class="zh"><b>新的落地頁上線之後，連結會換。</b>Cody 把新網址給你的時候，有三個地方要換：上面那則私訊、Meta Business Suite 的自動回覆、還有你的 bio。</p></div>
+
+    <details>
+      <summary>Optional — name the material in the DM · 選做：在私訊裡說明是什麼乾貨</summary>
+      <div class="dc">
+        <p>Slightly better response, slightly more work: add one line naming what they're getting, right after &ldquo;here it is&rdquo;.</p>
+        <p class="zh">回覆率會好一點，但你要多做一點事：在 &ldquo;here it is&rdquo; 後面加一行，說明他拿到的是什麼。</p>
+        <div class="tw"><table>
+          <thead><tr><th>They commented · 他留的關鍵字</th><th>Line to add · 要加的那一行</th></tr></thead>
+          <tbody>
+          <tr><td class="k">EFFORTLESS · ADAPT · LEVERAGE · BASICS · 5YEARS · LICENSED · CHECK</td><td>The Force Check is 16 yes/no questions that score whether the way you're working is building your career or burning your body.<p class="zh">Force Check 是 16 題是非題，算出你現在的工作方式是在累積職業生涯，還是在燒掉身體。</p></td></tr>
+          <tr><td class="k">MAP</td><td>The Hands &amp; Feet Starter Map is six spots — three in the hand, three in the foot — with the angle and the pressure for each.<p class="zh">手腳入門地圖是六個點——手三個、腳三個——每個點都有角度和力道。</p></td></tr>
+          <tr><td class="k">11YEARS</td><td>The Pre-Shift Check is the five questions I run before my first client — it tells you what kind of day to plan for.<p class="zh">上工前檢查是我看第一個客人之前會過一遍的五個問題——它會告訴你今天該怎麼安排。</p></td></tr>
+          <tr><td class="k">LIMIT</td><td>The Boundary Scripts are five situations with one line each — the kind you can actually say out loud with your manager in front of you.<p class="zh">界線話術是五個情境、每個一句話——是那種主管站在你面前你真的講得出口的句子。</p></td></tr>
+          <tr><td class="k">SOS</td><td>The Body Journal is three lines a night that show you your own pattern after a few weeks.<p class="zh">身體日誌是每晚寫三行，幾週之後你會看出自己的模式。</p></td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </details>
+  </section>
+
+  <section>
+    <h2>3 &middot; The landing page</h2>
+    <p class="zh">落地頁</p>
+    <p>They arrive from your DM, your bio, or the Story sticker. They put in their name and email, and the material opens on the next screen. You'll see them in the <b>Force Check (Nana)</b> Google Form under Responses, but you don't need to check it — Cody does, weekly.</p>
+    <p class="zh">他們會從你的私訊、你的 bio，或限動貼紙進來。填名字和 Email，下一頁就直接打開乾貨。你會在 <b>Force Check (Nana)</b> 這份 Google 表單的「回覆」看到他們，但你不用去看——Cody 每週會看。</p>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>The red lines</h2>
+    <p class="zh">紅線</p>
+    <p>These apply everywhere, every time — comments, DMs, captions, stories.</p>
+    <p class="zh">這幾條在任何地方、任何時候都適用：留言區、私訊、貼文文案、限動。</p>
+    <ul class="reds">
+      <li><b>No claims about results.</b> Never treat / cure / heal / fix your pain. You talk about position, angle, force, and how someone works.
+        <p class="zh"><b>不承諾效果。</b>不可以說治療、治好、根治、解決你的疼痛。你講的是位置、角度、施力，以及一個人怎麼工作。</p></li>
+      <li><b>No diagnosing.</b> If someone describes symptoms, use the line in the first toggle below.
+        <p class="zh"><b>不做診斷。</b>對方描述症狀的時候，用下面第一個摺疊區裡的那句制式回覆。</p></li>
+      <li><b>No course talk and no prices</b> — unless they ask first.
+        <p class="zh"><b>不主動談課程、不主動報價</b>——除非對方自己先問。</p></li>
+      <li><b>No patient testimonials.</b> Don't quote clients as proof.
+        <p class="zh"><b>不用客人當見證。</b>不要引用客人的話來當證明。</p></li>
+      <li><b>Your own hair loss is a story, never evidence.</b>
+        <em>You may say: you lost hair in patches during your worst stretch of overwork, and it grew back after you changed how you lived and worked. That's the whole story, and it's yours to tell.</em>
+        <em>You may never say, or imply, that acupuncture, massage, or anything you teach treated it, cured it, or made it grow back — and never that it will do the same for anyone else.</em>
+        <p class="zh"><b>你自己的鬼剃頭只能當故事，不能當證據。</b><br>
+        <b>可以講：</b>那段最操的日子你掉頭髮掉到一塊一塊的，後來你改了生活方式和工作方式，它自己長回來了。這就是完整的故事，而且是你自己的事，你有資格講。<br>
+        <b>絕對不能說，也不能暗示：</b>是針灸、推拿，或你教的任何東西治好它、讓它長回來的——更不能說別人照做也會一樣。</p></li>
+      <li><b>Don't argue.</b> One round, then stop.
+        <p class="zh"><b>不吵架。</b>回一次就停。</p></li>
+    </ul>
+    <p style="font-size:14px;color:var(--muted)">Nana has the same list in Chinese as a separate private note. The English one here is what goes into anything public.</p>
+    <p class="zh">Nana 另外有一份中文版紅線（私人筆記）。對外發出去的東西一律以這裡的英文版為準。</p>
+  </section>
+
+  <section>
+    <h2>Everything else</h2>
+    <p class="zh">其他狀況</p>
+    <p>Open these only when you need them.</p>
+    <p class="zh">需要的時候再打開。</p>
+
+    <details>
+      <summary>Other kinds of comments — questions, pushback, symptoms, bots · 其他類型的留言</summary>
+      <div class="dc">
+        <p>Reply to every comment, same day, one line each. The detail belongs in the DM.</p>
+        <p class="zh">每則留言都要回，當天回，一句話就好。細節留到私訊講。</p>
+        <p><b>They asked a question</b> — one real answer, then point them at the material. Two versions of each, depending on which Reel it's under.</p>
+        <p class="zh"><b>對方問了問題</b>——給一個真的答案，然後把他導向乾貨。每個例子有兩版，看留言在哪支 Reel 底下。</p>
+        <div class="box"><div class="bh"><span class="bl">Example 1 &mdash; &ldquo;comment [keyword]&rdquo; Reel<span class="zhl">範例 1 ·「留言關鍵字」Reel</span></span><button class="copy">Copy</button></div><pre>Especially deep tissue — that's where thumbs get wrecked. Comment EFFORTLESS and I'll send you the check.</pre></div>
+        <div class="box"><div class="bh"><span class="bl">Example 1 &mdash; &ldquo;link in bio&rdquo; Reel<span class="zhl">範例 1 ·「link in bio」Reel</span></span><button class="copy">Copy</button></div><pre>Especially deep tissue — that's where thumbs get wrecked. The check's in my bio — takes a minute.</pre></div>
+        <div class="box"><div class="bh"><span class="bl">Example 2 &mdash; &ldquo;comment [keyword]&rdquo; Reel<span class="zhl">範例 2 ·「留言關鍵字」Reel</span></span><button class="copy">Copy</button></div><pre>Forearms help, but if the weight isn't coming from your feet the strain just moves up the arm. Comment BASICS and I'll send you the check.</pre></div>
+        <div class="box"><div class="bh"><span class="bl">Example 2 &mdash; &ldquo;link in bio&rdquo; Reel<span class="zhl">範例 2 ·「link in bio」Reel</span></span><button class="copy">Copy</button></div><pre>Forearms help, but if the weight isn't coming from your feet the strain just moves up the arm. The check's in my bio — takes a minute.</pre></div>
+        <p><b>They're pushing back</b> (&ldquo;meridians aren't science&rdquo;) — answer once, never twice, don't delete. These comments push reach.</p>
+        <p class="zh"><b>對方在質疑</b>（例如「經絡又不科學」）——回一次，不要回第二次，不要刪留言。這種留言會推高觸及。</p>
+        <div class="box"><div class="bh"><span class="bl">Pushback<span class="zhl">質疑</span></span><button class="copy">Copy</button></div><pre>Fair enough. I don't teach it as theory — I teach where the hands go, the angle, and how to load your body weight. Call it what you like; the mechanics are the same.</pre></div>
+        <p><b>They describe symptoms and want a verdict</b></p>
+        <p class="zh"><b>對方描述症狀、想要你給一個答案</b></p>
+        <div class="box"><div class="bh"><span class="bl">Symptoms<span class="zhl">症狀</span></span><button class="copy">Copy</button></div><pre>That's more than I can answer in a comment. If it's lasted over two weeks, please get it checked by a doctor or physio.</pre></div>
+        <p><b>Friends and colleagues</b> — answer like a human. Don't push the keyword at everyone.<br><b>Ads and bots</b> — ignore and move on.</p>
+        <p class="zh"><b>朋友和同行</b>——像正常人一樣回，不要逢人就推關鍵字。<br><b>廣告和機器人</b>——直接略過。</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>If they reply to your DM · 如果對方回覆你的私訊</summary>
+      <div class="dc">
+        <p>Optional — only if you want to know more about who's actually coming in.</p>
+        <p class="zh">選做——只有在你想多了解進來的是什麼樣的人時才用。</p>
+        <div class="box"><div class="bh"><span class="bl">Send straight after the DM<span class="zhl">私訊發完之後直接接著問</span></span><button class="copy">Copy</button></div><pre>Curious — what are you most stuck on right now? Hands and wrists, the workload, or something else?</pre></div>
+        <p>Sounds new — just graduated, first year, still studying:</p>
+        <p class="zh">聽起來是新手——剛畢業、第一年、還在唸書：</p>
+        <div class="box"><div class="bh"><span class="bl">New<span class="zhl">新手</span></span><button class="copy">Copy</button></div><pre>That first year is the hardest on the hands — mine were exactly the same. How long have you been practising?</pre></div>
+        <p>Sounds experienced — 3+ years, own place, training others:</p>
+        <p class="zh">聽起來是老手——三年以上、自己開業、有在帶人：</p>
+        <div class="box"><div class="bh"><span class="bl">Experienced<span class="zhl">老手</span></span><button class="copy">Copy</button></div><pre>Still going after that many years already puts you in the minority. Is it mostly the thumbs and wrists, or the schedule?</pre></div>
+        <p>Close it out — nothing after this:</p>
+        <p class="zh">收尾——這之後就不要再傳了：</p>
+        <div class="box"><div class="bh"><span class="bl">Close<span class="zhl">收尾</span></span><button class="copy">Copy</button></div><pre>Thanks for sharing that — it helps me decide what to share next. I'll keep posting on this; message me anytime.</pre></div>
+        <p>They ask about a course themselves — never you first:</p>
+        <p class="zh">對方自己問到課程——永遠不要由你先提：</p>
+        <div class="box"><div class="bh"><span class="bl">Course question<span class="zhl">問到課程</span></span><button class="copy">Copy</button></div><pre>Not yet — everything I'm sharing right now is free on the account. I'll let you know if that changes.</pre></div>
+        <div class="flag stop"><p><b>Stop rules.</b> No reply, don't chase. Two turns maximum. No third message.</p>
+          <p class="zh"><b>停損規則。</b>對方沒回就不要追。最多來回兩次。不要有第三則訊息。</p></div>
+      </div>
+    </details>
+
+    <details>
+      <summary>Someone DMs you without commenting · 沒留言、直接私訊你的人</summary>
+      <div class="dc">
+        <p>Treat it like a conversation with a colleague. No link, no email ask.</p>
+        <p class="zh">當成同行之間的對話。不給連結，也不要 Email。</p>
+        <div class="box"><div class="bh"><span class="bl">Opener<span class="zhl">開場</span></span><button class="copy">Copy</button></div><pre>Hey, thanks for reaching out! Are you an RMT too? What's your work week like?</pre></div>
+        <p>They already got the link from the auto-reply. If they ask again, just point to it.</p>
+        <p class="zh">他已經從自動回覆拿到連結了。如果他再問一次，指一下就好。</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Timing and volume — when to sit down and reply · 時段與訊息量</summary>
+      <div class="dc">
+        <p><b>You are not on call. Nothing here has to be answered quickly.</b></p>
+        <p class="zh"><b>你不是隨時待命。這裡沒有任何一件事需要你很快回。</b></p>
+        <p>You sit down with the phone <b>twice a day</b>, and each sitting is about <b>ten minutes</b>:</p>
+        <p class="zh">你一天只拿起手機<b>兩次</b>，每次大約<b>十分鐘</b>：</p>
+        <ul class="never ok-list">
+          <li>Once before your first client of the day.
+            <p class="zh">當天第一個客人之前一次。</p></li>
+          <li>Once after your last client of the day.
+            <p class="zh">當天最後一個客人結束之後一次。</p></li>
+        </ul>
+        <p>That's it. Ten minutes is how long the sitting lasts, not how fast you have to reply. Don't pick the phone up between clients, and don't answer the moment a notification comes in.</p>
+        <p class="zh">就這樣。<b>十分鐘指的是你坐下來處理的那段時間有多長，不是你要在十分鐘內回覆。</b>客人跟客人中間不要拿手機，通知跳出來也不用馬上回。</p>
+        <p><b>The only standard is 24 hours.</b> Every comment and every DM gets an answer within a day. Anything that arrives after your evening sitting is tomorrow morning's job — that is normal and it costs you nothing.</p>
+        <p class="zh"><b>唯一的標準是 24 小時。</b>每則留言、每則私訊，一天之內有回就算達標。晚上那個時段之後才進來的，就是明天早上的事——這很正常，也不會讓你少掉任何人。</p>
+        <p>If a sitting runs long because there's a lot in there, stop at the end of it anyway and take the rest at the next one.</p>
+        <p class="zh">如果某次訊息特別多、十分鐘處理不完，還是在時間到的時候停下來，剩下的留到下一個時段。</p>
+        <p>Two things are tied to the day a Reel goes out:</p>
+        <p class="zh">有兩件事是綁在發 Reel 那天的：</p>
+        <ul class="never ok-list">
+          <li><b>Be back in the comments within an hour of posting.</b> The first hour is worth the most. You already know this one.
+            <p class="zh"><b>發布後一小時內要回到留言區。</b>第一個小時最值錢。這條你本來就知道。</p></li>
+          <li><b>Check the Story sticker actually opens the page.</b> Tap it yourself once, from your own phone.
+            <p class="zh"><b>確認限動貼紙真的打得開那個頁面。</b>自己用自己的手機點一次。</p></li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>Auto-reply setup — Meta Business Suite · 自動回覆設定</summary>
+      <div class="dc">
+        <p>Already switched on. This is here so you can find it again if it stops firing, or when the link changes.</p>
+        <p class="zh">已經開好了。寫在這裡是為了萬一它不動了、或連結要換的時候，你找得到。</p>
+        <p><b>Where it lives:</b> Meta Business Suite → Inbox → Automations → Instant reply.</p>
+        <p class="zh"><b>位置：</b>Meta Business Suite → 收件匣 Inbox → 自動化 Automations → 即時回覆 Instant reply。</p>
+        <p>Meta moves this menu around every few months. If it isn't where it says here, screenshot what you're looking at and send it to Cody — don't hunt for it.</p>
+        <p class="zh">Meta 每隔幾個月就會搬這個選單的位置。如果不在上面寫的地方，把你看到的畫面截圖傳給 Cody，不用自己找。</p>
+        <p>This is what should be in the text box:</p>
+        <p class="zh">文字框裡應該是這段：</p>
+        <div class="box"><div class="bh"><span class="bl">Instant reply &middot; 182 characters<span class="zhl">即時回覆 · 182 字</span></span><button class="copy">Copy</button></div><pre>Hey, thanks for the message! If you're here for the Force Check, it's here:
+
+https://lamasonic2020-cloud.github.io/force-check-landing/
+
+I'll reply properly when I'm between clients.</pre></div>
+        <div class="flag stop"><p><b>Don't turn on FAQ buttons.</b> Meta will offer them in the same screen. They send people down menus instead of into the page, and they make the account read like a shop.</p>
+          <p class="zh"><b>不要開 FAQ buttons。</b>Meta 會在同一個畫面推薦你開。那會把人帶進選單而不是帶進頁面，而且會讓帳號看起來像店家。</p></div>
+      </div>
+    </details>
+  </section>
+
+</main>
+
+<footer><div class="wrap">
+  <p>ACUFLOW &middot; v2-EN 中英對照版, 2026-09-12. Comment → DM → landing page. No emails are sent by hand any more.<br>留言 → 私訊 → 落地頁。不再手動寄任何 Email。英文為實際發送內容，中文僅為說明。</p>
+  <p>The Chinese SOP in Notion is the master — if the two ever disagree, the Chinese one wins.<br>以 Notion 上的中文 SOP 為準——兩邊有出入時，以中文版為準。</p>
+</div></footer>
+
+<script>
+document.addEventListener("click", function (ev) {
+  var b = ev.target.closest(".copy");
+  if (!b) return;
+  var pre = b.closest(".box").querySelector("pre");
+  navigator.clipboard.writeText(pre.textContent).then(function () {
+    b.textContent = "Copied"; b.classList.add("ok");
+    setTimeout(function () { b.textContent = "Copy"; b.classList.remove("ok"); }, 1400);
+  }).catch(function () {
+    var r = document.createRange(); r.selectNodeContents(pre);
+    var s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    b.textContent = "Selected";
+    setTimeout(function () { b.textContent = "Copy"; }, 1600);
+  });
+});
+</script>
+</body>
+</html>

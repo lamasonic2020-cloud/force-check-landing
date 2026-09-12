@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comment → DM Playbook · ACUFLOW</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;700;800&display=swap">
+<style>
+:root{
+  --ground:#FBF6F7; --surface:#FFF; --sunk:#F9EDF1;
+  --ink:#3A1828; --body:#5A3345; --muted:#8A6273;
+  --hair:#EEDCE3; --accent:#B4286A; --on-accent:#FDE9EC; --soft:#F7E5EC;
+  --warn:#9A5B10; --warn-bg:#FBF0DC; --stop:#A32218; --stop-bg:#FBE7E4;
+  --display:"Cormorant Garamond",Georgia,serif;
+  --mark:"Cinzel",Georgia,serif;
+  --ui:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,"PingFang TC",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --ground:#170F13; --surface:#211519; --sunk:#2B1A21;
+  --ink:#F7E9EE; --body:#DFC5D0; --muted:#A98A98;
+  --hair:#3A252D; --accent:#E87BA8; --on-accent:#25131A; --soft:#361D28;
+  --warn:#E9B45E; --warn-bg:#2E2213; --stop:#F09085; --stop-bg:#331916;
+}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--body);font-family:var(--ui);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:780px;margin:0 auto;padding:0 22px}
+:where(a,button,summary):focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:5px}
+
+header{border-bottom:1px solid var(--hair);background:var(--surface)}
+header .wrap{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:16px 22px;flex-wrap:wrap}
+.brand{font-family:var(--mark);font-size:14px;letter-spacing:.32em;color:var(--accent)}
+.who{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+h1{font-family:var(--display);font-weight:700;font-size:clamp(32px,6.5vw,46px);line-height:1.05;color:var(--ink);margin:44px 0 0;text-wrap:balance}
+h2{font-family:var(--display);font-weight:700;font-size:28px;line-height:1.15;color:var(--ink);margin:0 0 14px}
+h3{font-family:var(--display);font-weight:700;font-size:21px;color:var(--ink);margin:26px 0 0}
+p{margin:14px 0 0;max-width:66ch}
+section{padding:44px 0 0}
+hr{border:0;border-top:1px solid var(--hair);margin:44px 0 0}
+
+.lead{background:var(--soft);border-radius:12px;padding:20px 22px;margin:26px 0 0}
+.lead p{margin:0}
+.lead p+p{margin-top:9px}
+
+.flow{list-style:none;margin:24px 0 0;padding:0;display:flex;flex-direction:column;gap:12px;counter-reset:s}
+.flow li{
+  counter-increment:s;background:var(--surface);border:1px solid var(--hair);border-radius:12px;
+  padding:18px 20px;display:grid;grid-template-columns:34px 1fr;gap:0 16px;align-items:start;
+}
+.flow li::before{
+  content:counter(s);width:30px;height:30px;border-radius:50%;
+  background:var(--accent);color:var(--on-accent);font-weight:800;font-size:14px;
+  display:flex;align-items:center;justify-content:center;
+}
+.flow b{display:block;font-size:18px;color:var(--ink);line-height:1.3}
+.flow span{display:block;margin-top:5px;font-size:14.5px;color:var(--muted)}
+
+table{border-collapse:collapse;width:100%;background:var(--surface);margin:18px 0 0}
+.tw{overflow-x:auto;border:1px solid var(--hair);border-radius:10px;margin:18px 0 0}
+.tw table{margin:0;min-width:460px}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--hair);font-size:14.5px;vertical-align:top}
+th{background:var(--sunk);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:800}
+tr:last-child td{border-bottom:0}
+td.k{font-weight:800;color:var(--accent);font-size:12.5px;letter-spacing:.05em}
+td b{color:var(--ink)}
+
+.box{background:var(--surface);border:1px solid var(--hair);border-radius:10px;overflow:hidden;margin:14px 0 0}
+.bh{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:9px 13px;background:var(--sunk);border-bottom:1px solid var(--hair)}
+.bl{font-size:11px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.copy{font-family:var(--ui);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:transparent;border:1px solid var(--accent);border-radius:999px;padding:4px 13px;cursor:pointer;white-space:nowrap}
+.copy:hover,.copy.ok{background:var(--accent);color:var(--on-accent)}
+.box pre{margin:0;padding:15px 16px;font-family:var(--ui);font-size:14.5px;line-height:1.6;color:var(--ink);white-space:pre-wrap;word-break:break-word}
+
+.flag{border-radius:10px;padding:15px 17px;margin:18px 0 0;font-size:14.5px;max-width:66ch}
+.flag.warn{background:var(--warn-bg)} .flag.warn b{color:var(--warn)}
+.flag.stop{background:var(--stop-bg)} .flag.stop b{color:var(--stop)}
+.flag p{margin:0;max-width:none}
+.flag p+p{margin-top:8px}
+.twostep{background:var(--sunk);border-radius:12px;padding:18px 20px;margin:20px 0 0;display:flex;flex-direction:column;gap:10px}
+.twostep>div:not(.box):not(.flag){font-size:15.5px;color:var(--ink)}
+.twostep b{color:var(--accent);font-weight:800;margin-right:4px}
+.twostep .box{margin-top:4px}
+
+.reds{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:9px}
+.reds li{background:var(--stop-bg);border-radius:9px;padding:13px 16px;font-size:15px;color:var(--ink)}
+.reds b{color:var(--stop)}
+.reds em{display:block;margin-top:6px;font-style:normal;font-size:14px;color:var(--body)}
+
+.never{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:14.5px}
+.never li{padding-left:20px;position:relative}
+.never li::before{content:"×";position:absolute;left:2px;top:-1px;font-weight:800;color:var(--stop)}
+.ok-list li::before{content:"✓";color:var(--accent)}
+
+details{background:var(--surface);border:1px solid var(--hair);border-radius:10px;margin:10px 0 0;overflow:hidden}
+summary{cursor:pointer;padding:14px 17px;font-weight:700;color:var(--ink);font-size:15.5px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"+ ";color:var(--accent);font-weight:800}
+details[open] summary::before{content:"− "}
+details[open] summary{border-bottom:1px solid var(--hair)}
+.dc{padding:4px 17px 18px}
+.dc p:first-child{margin-top:14px}
+
+footer{margin-top:52px;border-top:1px solid var(--hair)}
+footer .wrap{padding:20px 22px 46px}
+footer p{margin:0;font-size:12.5px;color:var(--muted)}
+footer p+p{margin-top:7px}
+a{color:var(--accent)}
+@media print{
+  body{background:#fff}
+  details{page-break-inside:avoid}
+  details:not([open]) .dc{display:none}
+  .copy{display:none}
+}
+</style>
+</head>
+<body>
+
+
+<header><div class="wrap"><span class="brand">ACUFLOW</span><span class="who">Comment → DM Playbook · v3</span></div></header>
+
+<main class="wrap">
+
+  <h1>Two steps. That's the whole thing.</h1>
+
+  <div class="lead">
+    <p>Everything past the two steps is optional detail. Open it only when you hit something they don't cover.</p>
+    <p>When something doesn't fit any of these, answer like a person and keep it short.</p>
+  </div>
+
+  <ol class="flow">
+    <li><div><b>They comment a keyword — you reply and send one DM.</b><span>Same DM every time. It only has a link.</span></div></li>
+    <li><div><b>They put their name and email on the landing page and the material opens on the next screen.</b><span>Nothing for you to do.</span></div></li>
+  </ol>
+
+  <div class="flag warn"><p><b>You don't send any emails any more.</b> The landing page hands over the material the moment they submit the form. Nothing arrives in your inbox to action, and nothing goes out from you.</p></div>
+
+  <hr>
+
+  <section>
+    <h2>1 &middot; Before every Reel goes out</h2>
+    <p>Thirty seconds, once per Reel. This is the part that quietly breaks.</p>
+    <ul class="never ok-list">
+      <li><b>Your bio link is the landing page.</b> Check it's still there.</li>
+      <li><b>The Story you post on Reel day gets the link sticker on the CTA slide.</b></li>
+      <li><b>Reels from R__ on say &ldquo;link in bio&rdquo; instead of &ldquo;comment X&rdquo;.</b> Older Reels still promise a DM — keep sending those.</li>
+    </ul>
+    <div class="flag warn"><p>Both CTAs are live at the same time, and they will be for a while. What you do next depends on which Reel the comment is sitting under — the two reply versions in the next section cover it.</p></div>
+  </section>
+
+  <section>
+    <h2>2 &middot; Reply, then DM</h2>
+
+    <p>Two separate messages, in this order. The reply is public, under their comment. The DM is private, in their inbox. Don't skip the reply — it's what tells them to go and look.</p>
+
+    <div class="twostep">
+      <div><b>a.</b> First, reply under their comment. Which version depends on the Reel:</div>
+      <div class="box"><div class="bh"><span class="bl">Reply A &mdash; Reels that said &ldquo;comment [keyword]&rdquo;</span><button class="copy">Copy</button></div><pre>Sent — check your DMs. If we don't follow each other yet, it'll be in your message requests.</pre></div>
+      <div class="box"><div class="bh"><span class="bl">Reply B &mdash; Reels from R__ on, that said &ldquo;link in bio&rdquo;</span><button class="copy">Copy</button></div><pre>It's in my bio — takes about a minute.</pre></div>
+      <div style="margin-top:6px"><b>b.</b> If it was Reply A, send them this DM. Same one every time, whatever they commented:</div>
+      <div class="box"><div class="bh"><span class="bl">The DM &middot; 251 characters, well inside Instagram&rsquo;s limit</span><button class="copy">Copy</button></div><pre>Hi! Thanks for the comment — here it is:
+
+https://lamasonic2020-cloud.github.io/force-check-landing/
+
+Put your name and email in and it opens straight away. No spam, nothing to buy — just the material, and the odd note for working therapists later on.</pre></div>
+    </div>
+
+    <div class="flag warn"><p><b>That second sentence in Reply A is not optional.</b> Instagram files DMs from people who don't follow you into their Requests folder. If they never open it, they never see your message. This is where manual DMs lose people.</p></div>
+
+    <p>With Reply B there's no DM to send — the link is already in your bio and they go straight there. If they comment on a link-in-bio Reel and still ask you to send it, send the DM above. Don't make a point of it.</p>
+
+    <h3>How you actually get their email</h3>
+    <p><b>You never ask for it and you never handle it.</b> You send the link; they fill in the form on the landing page themselves; the material opens on the next screen. Their name and email land in the <b>Force Check (Nana)</b> Google Form under Responses, and Cody works from that.</p>
+    <ul class="never">
+      <li>Don't ask them to reply with their email in the DM.</li>
+      <li>Don't type their email into the form on their behalf.</li>
+      <li>Don't send the material itself in the DM.</li>
+      <li>Don't promise to send anything by email. Nothing is sent by email any more.</li>
+    </ul>
+    <p>If someone <b>replies with their email anyway</b> — they're used to the old way — don't take it down, and don't apologise. Point them back at the link:</p>
+    <div class="box"><div class="bh"><span class="bl">They sent their email instead</span><button class="copy">Copy</button></div><pre>No need for your email on my end — pop it into the link and the whole thing opens right there:
+https://lamasonic2020-cloud.github.io/force-check-landing/</pre></div>
+
+    <p>You can put their first name at the start of the DM. Change nothing else. <b>Don't paste the material itself into a DM</b> — Instagram cuts messages off around 1,000 characters and the send silently fails.</p>
+
+    <h3>If they DM you first</h3>
+    <p>Someone who messages the account for the first time <b>already has the link</b> — the instant reply sends it automatically, before you've even seen the message. So don't paste it again. It reads like you didn't look at what they wrote.</p>
+    <p>Answer the actual question they asked, in one or two lines, like a colleague. Only mention the link if they ask where it went or say they can't find it.</p>
+
+    <div class="flag warn"><p><b>The link changes when the new landing page goes live.</b> When Cody sends the new URL, it needs swapping in three places: the DM above, the auto-reply in Meta Business Suite, and your bio.</p></div>
+
+    <details>
+      <summary>Optional — name the material in the DM</summary>
+      <div class="dc">
+        <p>Slightly better response, slightly more work: add one line naming what they're getting, right after &ldquo;here it is&rdquo;.</p>
+        <div class="tw"><table>
+          <thead><tr><th>They commented</th><th>Line to add</th></tr></thead>
+          <tbody>
+          <tr><td class="k">EFFORTLESS · ADAPT · LEVERAGE · BASICS · 5YEARS · LICENSED · CHECK</td><td>The Force Check is 16 yes/no questions that score whether the way you're working is building your career or burning your body.</td></tr>
+          <tr><td class="k">MAP</td><td>The Hands &amp; Feet Starter Map is six spots — three in the hand, three in the foot — with the angle and the pressure for each.</td></tr>
+          <tr><td class="k">11YEARS</td><td>The Pre-Shift Check is the five questions I run before my first client — it tells you what kind of day to plan for.</td></tr>
+          <tr><td class="k">LIMIT</td><td>The Boundary Scripts are five situations with one line each — the kind you can actually say out loud with your manager in front of you.</td></tr>
+          <tr><td class="k">SOS</td><td>The Body Journal is three lines a night that show you your own pattern after a few weeks.</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </details>
+  </section>
+
+  <section>
+    <h2>3 &middot; The landing page</h2>
+    <p>They arrive from your DM, your bio, or the Story sticker. They put in their name and email, and the material opens on the next screen. You'll see them in the <b>Force Check (Nana)</b> Google Form under Responses, but you don't need to check it — Cody does, weekly.</p>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>The red lines</h2>
+    <p>These apply everywhere, every time — comments, DMs, captions, stories.</p>
+    <ul class="reds">
+      <li><b>No claims about results.</b> Never treat / cure / heal / fix your pain. You talk about position, angle, force, and how someone works.</li>
+      <li><b>No diagnosing.</b> If someone describes symptoms, use the line in the first toggle below.</li>
+      <li><b>No course talk and no prices</b> — unless they ask first.</li>
+      <li><b>No patient testimonials.</b> Don't quote clients as proof.</li>
+      <li><b>Your own hair loss is a story, never evidence.</b>
+        <em>You may say: you lost hair in patches during your worst stretch of overwork, and it grew back after you changed how you lived and worked. That's the whole story, and it's yours to tell.</em>
+        <em>You may never say, or imply, that acupuncture, massage, or anything you teach treated it, cured it, or made it grow back — and never that it will do the same for anyone else.</em>
+      </li>
+      <li><b>Don't argue.</b> One round, then stop.</li>
+    </ul>
+    <p style="font-size:14px;color:var(--muted)">Nana has the same list in Chinese as a separate private note. The English one here is what goes into anything public.</p>
+  </section>
+
+  <section>
+    <h2>Everything else</h2>
+    <p>Open these only when you need them.</p>
+
+    <details>
+      <summary>Other kinds of comments — questions, pushback, symptoms, bots</summary>
+      <div class="dc">
+        <p>Reply to every comment, same day, one line each. The detail belongs in the DM.</p>
+        <p><b>They asked a question</b> — one real answer, then point them at the material. Two versions of each, depending on which Reel it's under.</p>
+        <div class="box"><div class="bh"><span class="bl">Example 1 &mdash; &ldquo;comment [keyword]&rdquo; Reel</span><button class="copy">Copy</button></div><pre>Especially deep tissue — that's where thumbs get wrecked. Comment EFFORTLESS and I'll send you the check.</pre></div>
+        <div class="box"><div class="bh"><span class="bl">Example 1 &mdash; &ldquo;link in bio&rdquo; Reel</span><button class="copy">Copy</button></div><pre>Especially deep tissue — that's where thumbs get wrecked. The check's in my bio — takes a minute.</pre></div>
+        <div class="box"><div class="bh"><span class="bl">Example 2 &mdash; &ldquo;comment [keyword]&rdquo; Reel</span><button class="copy">Copy</button></div><pre>Forearms help, but if the weight isn't coming from your feet the strain just moves up the arm. Comment BASICS and I'll send you the check.</pre></div>
+        <div class="box"><div class="bh"><span class="bl">Example 2 &mdash; &ldquo;link in bio&rdquo; Reel</span><button class="copy">Copy</button></div><pre>Forearms help, but if the weight isn't coming from your feet the strain just moves up the arm. The check's in my bio — takes a minute.</pre></div>
+        <p><b>They're pushing back</b> (&ldquo;meridians aren't science&rdquo;) — answer once, never twice, don't delete. These comments push reach.</p>
+        <div class="box"><div class="bh"><span class="bl">Pushback</span><button class="copy">Copy</button></div><pre>Fair enough. I don't teach it as theory — I teach where the hands go, the angle, and how to load your body weight. Call it what you like; the mechanics are the same.</pre></div>
+        <p><b>They describe symptoms and want a verdict</b></p>
+        <div class="box"><div class="bh"><span class="bl">Symptoms</span><button class="copy">Copy</button></div><pre>That's more than I can answer in a comment. If it's lasted over two weeks, please get it checked by a doctor or physio.</pre></div>
+        <p><b>Friends and colleagues</b> — answer like a human. Don't push the keyword at everyone.<br><b>Ads and bots</b> — ignore and move on.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>If they reply to your DM</summary>
+      <div class="dc">
+        <p>Optional — only if you want to know more about who's actually coming in.</p>
+        <div class="box"><div class="bh"><span class="bl">Send straight after the DM</span><button class="copy">Copy</button></div><pre>Curious — what are you most stuck on right now? Hands and wrists, the workload, or something else?</pre></div>
+        <p>Sounds new — just graduated, first year, still studying:</p>
+        <div class="box"><div class="bh"><span class="bl">New</span><button class="copy">Copy</button></div><pre>That first year is the hardest on the hands — mine were exactly the same. How long have you been practising?</pre></div>
+        <p>Sounds experienced — 3+ years, own place, training others:</p>
+        <div class="box"><div class="bh"><span class="bl">Experienced</span><button class="copy">Copy</button></div><pre>Still going after that many years already puts you in the minority. Is it mostly the thumbs and wrists, or the schedule?</pre></div>
+        <p>Close it out — nothing after this:</p>
+        <div class="box"><div class="bh"><span class="bl">Close</span><button class="copy">Copy</button></div><pre>Thanks for sharing that — it helps me decide what to share next. I'll keep posting on this; message me anytime.</pre></div>
+        <p>They ask about a course themselves — never you first:</p>
+        <div class="box"><div class="bh"><span class="bl">Course question</span><button class="copy">Copy</button></div><pre>Not yet — everything I'm sharing right now is free on the account. I'll let you know if that changes.</pre></div>
+        <div class="flag stop"><p><b>Stop rules.</b> No reply, don't chase. Two turns maximum. No third message.</p></div>
+      </div>
+    </details>
+
+    <details>
+      <summary>Someone DMs you without commenting</summary>
+      <div class="dc">
+        <p>Treat it like a conversation with a colleague. No link, no email ask.</p>
+        <div class="box"><div class="bh"><span class="bl">Opener</span><button class="copy">Copy</button></div><pre>Hey, thanks for reaching out! Are you an RMT too? What's your work week like?</pre></div>
+        <p>They already got the link from the auto-reply. If they ask again, just point to it.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Timing and volume — when to sit down and reply</summary>
+      <div class="dc">
+        <p><b>You are not on call. Nothing here has to be answered quickly.</b></p>
+        <p>You sit down with the phone <b>twice a day</b>, and each sitting is about <b>ten minutes</b>:</p>
+        <ul class="never ok-list">
+          <li>Once before your first client of the day.</li>
+          <li>Once after your last client of the day.</li>
+        </ul>
+        <p>That's it. Ten minutes is how long the sitting lasts, not how fast you have to reply. Don't pick the phone up between clients, and don't answer the moment a notification comes in.</p>
+        <p><b>The only standard is 24 hours.</b> Every comment and every DM gets an answer within a day. Anything that arrives after your evening sitting is tomorrow morning's job — that is normal and it costs you nothing.</p>
+        <p>If a sitting runs long because there's a lot in there, stop at the end of it anyway and take the rest at the next one.</p>
+        <p>Two things are tied to the day a Reel goes out:</p>
+        <ul class="never ok-list">
+          <li><b>Be back in the comments within an hour of posting.</b> The first hour is worth the most. You already know this one.</li>
+          <li><b>Check the Story sticker actually opens the page.</b> Tap it yourself once, from your own phone.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>Auto-reply setup — Meta Business Suite</summary>
+      <div class="dc">
+        <p>Already switched on. This is here so you can find it again if it stops firing, or when the link changes.</p>
+        <p><b>Where it lives:</b> Meta Business Suite → Inbox → Automations → Instant reply.</p>
+        <p>Meta moves this menu around every few months. If it isn't where it says here, screenshot what you're looking at and send it to Cody — don't hunt for it.</p>
+        <p>This is what should be in the text box:</p>
+        <div class="box"><div class="bh"><span class="bl">Instant reply &middot; 182 characters</span><button class="copy">Copy</button></div><pre>Hey, thanks for the message! If you're here for the Force Check, it's here:
+
+https://lamasonic2020-cloud.github.io/force-check-landing/
+
+I'll reply properly when I'm between clients.</pre></div>
+        <div class="flag stop"><p><b>Don't turn on FAQ buttons.</b> Meta will offer them in the same screen. They send people down menus instead of into the page, and they make the account read like a shop.</p></div>
+      </div>
+    </details>
+  </section>
+
+</main>
+
+<footer><div class="wrap">
+  <p>ACUFLOW &middot; v2-EN, 2026-09-12. Comment → DM → landing page. No emails are sent by hand any more.</p>
+  <p>The Chinese SOP in Notion is the master — if the two ever disagree, the Chinese one wins.</p>
+</div></footer>
+
+<script>
+document.addEventListener("click", function (ev) {
+  var b = ev.target.closest(".copy");
+  if (!b) return;
+  var pre = b.closest(".box").querySelector("pre");
+  navigator.clipboard.writeText(pre.textContent).then(function () {
+    b.textContent = "Copied"; b.classList.add("ok");
+    setTimeout(function () { b.textContent = "Copy"; b.classList.remove("ok"); }, 1400);
+  }).catch(function () {
+    var r = document.createRange(); r.selectNodeContents(pre);
+    var s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    b.textContent = "Selected";
+    setTimeout(function () { b.textContent = "Copy"; }, 1600);
+  });
+});
+</script>
+</body>
+</html>
